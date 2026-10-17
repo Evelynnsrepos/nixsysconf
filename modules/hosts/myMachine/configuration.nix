@@ -86,6 +86,7 @@
       git
       emacs-nox
       alacritty
+      gh
     ];
 
     system.stateVersion = "26.05";
