@@ -93,8 +93,11 @@ programs.steam.enable = true;
       alacritty
       gh
       godot
-      discord
-      vencord
+      (discord.override { withVencord = true; })
+      kdePackages.dolphin
+      kdePackages.kate
+      kdePackages.qt6ct
+      oreo-cursors-plus  # all Oreo colours; switch with the scripts in ~/claude scripts
       vivaldi
       cargo
       jetbrains-toolbox
