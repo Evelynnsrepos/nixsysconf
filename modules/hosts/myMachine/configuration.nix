@@ -6,6 +6,7 @@
       [ self.nixosModules.myMachineHardware
         self.nixosModules.claude
         self.nixosModules.spicetify
+        self.nixosModules.niri
       ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
