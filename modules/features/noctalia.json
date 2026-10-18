@@ -1,0 +1,2 @@
+[31m ERROR[97m quickshell.ipc[0m: Socket Error QLocalSocket::PeerClosedError
+[31m ERROR[97m quickshell.ipc[0m: Error occurred while waiting for response.

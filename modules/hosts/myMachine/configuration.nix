@@ -82,6 +82,9 @@
     # flatpak
     services.flatpak.enable = true;
 
+#steam
+programs.steam.enable = true;
+
     # List packages installed in system profile.
     environment.systemPackages = with pkgs; [
       wget
@@ -90,6 +93,11 @@
       alacritty
       gh
       godot
+      discord
+      vencord
+      vivaldi
+      cargo
+      jetbrains-toolbox
       # spotify  # provided by spicetify (modules/features/spicetify.nix)
 
     ];
