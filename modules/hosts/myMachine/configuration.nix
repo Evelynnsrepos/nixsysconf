@@ -5,6 +5,7 @@
     imports =
       [ self.nixosModules.myMachineHardware
         self.nixosModules.claude
+        self.nixosModules.spicetify
       ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -87,6 +88,9 @@
       emacs-nox
       alacritty
       gh
+      godot
+      # spotify  # provided by spicetify (modules/features/spicetify.nix)
+
     ];
 
     system.stateVersion = "26.05";

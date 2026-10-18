@@ -9,6 +9,8 @@
 
     claude-desktop.url = "github:k3d3/claude-desktop-linux-flake";
     # no nixpkgs.follows: this flake is old and breaks on current unstable (uses removed nodePackages)
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake {inherit inputs;} (inputs.import-tree ./modules);
