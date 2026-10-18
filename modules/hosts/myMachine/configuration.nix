@@ -5,8 +5,8 @@
     imports =
       [ self.nixosModules.myMachineHardware
         self.nixosModules.claude
-        self.nixosModules.spicetify
         self.nixosModules.niri
+        self.nixosModules.millennium
       ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -101,7 +101,7 @@ programs.steam.enable = true;
       vivaldi
       cargo
       jetbrains-toolbox
-      # spotify  # provided by spicetify (modules/features/spicetify.nix)
+      spicetify-cli  # patches the user Flatpak Spotify (com.spotify.Client), themed by Noctalia
 
     ];
 

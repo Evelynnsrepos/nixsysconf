@@ -7,9 +7,8 @@
 
     wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
 
-    claude-desktop.url = "github:k3d3/claude-desktop-linux-flake";
-    # no nixpkgs.follows: this flake is old and breaks on current unstable (uses removed nodePackages)
-    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    # Steam with Millennium (used via its overlay, so it builds against our nixpkgs)
+    millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
 
   };
 
