@@ -19,6 +19,19 @@
     # Enable networking
     networking.networkmanager.enable = true;
 
+    # Fish (Alacritty's shell): completions for Nix-installed programs etc.
+    programs.fish.enable = true;
+    # Alacritty font, needed for Starship's icons and rounded prompt segments
+    fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
+
+    # Mullvad VPN: daemon + GUI
+    services.mullvad-vpn = {
+      enable = true;
+      gui.enable = true;
+    };
+    # Mullvad sets its DNS through systemd-resolved
+    services.resolved.enable = true;
+
     # Set your time zone.
     time.timeZone = "Europe/Berlin";
 
@@ -97,11 +110,24 @@ programs.steam.enable = true;
       kdePackages.dolphin
       kdePackages.kate
       kdePackages.qt6ct
+      kdePackages.plasma-integration  # "kde" Qt platform theme: Qt/KDE apps read Noctalia's kdeglobals
       oreo-cursors-plus  # all Oreo colours; switch with the scripts in ~/claude scripts
       vivaldi
       cargo
       jetbrains-toolbox
       spicetify-cli  # patches the user Flatpak Spotify (com.spotify.Client), themed by Noctalia
+      mission-center  # not the Flatpak: its magpie helper runs on the host and needs nix-ld
+      fish
+      # Fish setup (~/.config/fish/config.fish); Starship gets Noctalia's palette
+      starship
+      fzf
+      zoxide
+      eza
+      bat
+      fishPlugins.fzf-fish
+      fishPlugins.autopair
+      fastfetch  # runs when Alacritty opens (~/.config/fish/config.fish); config in ~/.config/fastfetch
+      fetch  # animated 3D distro-logo fetch (github.com/areofyl/fetch); config in ~/.config/fetch/config
 
     ];
 

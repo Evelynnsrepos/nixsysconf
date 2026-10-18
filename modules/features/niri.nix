@@ -17,8 +17,9 @@
 
         xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
-        # Qt/KDE apps read their colours via qt6ct (Noctalia KColorScheme template)
-        environment.QT_QPA_PLATFORMTHEME = "qt6ct";
+        # Qt/KDE apps read their colours from ~/.config/kdeglobals (Noctalia KColorScheme
+        # template) via plasma-integration; qt6ct's palette is ignored by Dolphin/Kate
+        environment.QT_QPA_PLATFORMTHEME = "kde";
         input.keyboard = {
           xkb.layout = "de";
         };
