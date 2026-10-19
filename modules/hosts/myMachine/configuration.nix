@@ -10,6 +10,7 @@
         self.nixosModules.links
         self.nixosModules.home
 	self.nixosModules.opentabletdriver
+        self.nixosModules.emacs
       ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -124,7 +125,6 @@ programs.steam.enable = true;
     environment.systemPackages = with pkgs; [
       wget
       git
-      emacs-pgtk
       alacritty
       kitty  # Mod+Return; ~/.config/kitty/kitty.conf (cursor trail, Noctalia colours)
       gh
