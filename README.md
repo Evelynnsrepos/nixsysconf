@@ -8,9 +8,6 @@ One `nixos-rebuild` gives you the system, the packages and all the app configs. 
 can't (or shouldn't) be in a flake. They are listed under [What's not included](#whats-not-included)
 with steps to set them up by hand.
 
-Want to add a new program, service or flake? See **[FLAKE-CHEATSHEET.md](FLAKE-CHEATSHEET.md)**:
-where things go, when you need a new input, and how to read mynixos.com.
-
 ---
 
 ## What you get
