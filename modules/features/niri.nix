@@ -20,7 +20,7 @@
         # Qt/KDE apps read their colours from ~/.config/kdeglobals (Noctalia KColorScheme
         # template) via plasma-integration; qt6ct's palette is ignored by Dolphin/Kate
         environment.QT_QPA_PLATFORMTHEME = "kde";
-        # Material 3 look: Kvantum theme "KMaterial" from ~/KMaterial-de, coloured by a Noctalia
+        # Material 3 look: Kvantum theme "KMaterial" from ~/My-repos/KMaterial-de, coloured by a Noctalia
         # user template; theme chosen in ~/.config/Kvantum/kvantum.kvconfig
         environment.QT_STYLE_OVERRIDE = "kvantum";
         input.keyboard = {

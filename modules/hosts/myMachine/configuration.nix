@@ -21,7 +21,7 @@
     networking.networkmanager.enable = true;
 
     # Kvantum caps the frame of list items (ItemView) at 6px, which limits how round
-    # selections can be. Raise the cap to 24px for KMaterial (~/KMaterial-de).
+    # selections can be. Raise the cap to 24px for KMaterial (~/My-repos/KMaterial-de).
     nixpkgs.overlays = [
       (final: prev: {
         kdePackages = prev.kdePackages.overrideScope (kfinal: kprev: {
@@ -132,8 +132,8 @@ programs.steam.enable = true;
       kdePackages.kate
       kdePackages.qt6ct
       kdePackages.plasma-integration  # "kde" Qt platform theme: Qt/KDE apps read Noctalia's kdeglobals
-      fluent-icon-theme  # base of the "KMaterial" icon theme (~/KMaterial-de/icons)
-      kdePackages.qtstyleplugin-kvantum  # Qt style: theme "KMaterial" from ~/KMaterial-de (Noctalia user template)
+      fluent-icon-theme  # base of the "KMaterial" icon theme (~/My-repos/KMaterial-de/icons)
+      kdePackages.qtstyleplugin-kvantum  # Qt style: theme "KMaterial" from ~/My-repos/KMaterial-de (Noctalia user template)
       oreo-cursors-plus  # all Oreo colours; switch with the scripts in ~/claude scripts
       vivaldi
       cargo
@@ -152,6 +152,10 @@ programs.steam.enable = true;
       fishPlugins.autopair
       fastfetch  # runs when Alacritty opens (~/.config/fish/config.fish); config in ~/.config/fastfetch
       fetch  # animated 3D distro-logo fetch (github.com/areofyl/fetch); config in ~/.config/fetch/config
+      (mpv.override { scripts = with mpvScripts; [ uosc thumbfast ]; })  # ~/.config/mpv, colours from Noctalia template
+      # Default Apps Noctalia plugin (~/My-repos/DefaultAppsNoctaliaPlugin):
+      xdg-terminal-exec  # default terminal from ~/.config/xdg-terminals.list (GLib, launchers)
+      kdePackages.kservice  # kbuildsycoca6, so running KDE apps pick up new defaults
 
     ];
 
