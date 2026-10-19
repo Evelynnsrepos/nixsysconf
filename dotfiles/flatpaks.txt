@@ -1,0 +1,13 @@
+artcraft-launcher-origin	ai.storyteller.artcraft-launcher
+filmcraft-origin	ai.storyteller.filmcraft
+pdfcraft-origin	ai.storyteller.pdfcraft
+photocraft-origin	ai.storyteller.photocraft
+wordcraft-origin	ai.storyteller.wordcraft
+flathub	app.zen_browser.zen
+flathub	com.github.Matoking.protontricks
+flathub	com.github.tchx84.Flatseal
+flathub	com.spotify.Client
+flathub	com.vscodium.codium
+flathub	com.vysp3r.ProtonPlus
+evelopment-games-designer-origin	io.github.Evelynnsrepos.Evelopment-Games-Designer
+flathub	net.davidotek.pupgui2

@@ -1,0 +1,36 @@
+[config]
+
+[templates]
+
+# KMaterial - Material 3 look for Qt/KDE apps in Noctalia's colours.
+# Copy (or merge) this into ~/.config/noctalia/user-templates.toml and turn on
+# "User templates" in Noctalia's settings (Color Scheme -> Templates).
+# Paths assume the repo is cloned to ~/My-repos/KMaterial-de; adjust them if it isn't.
+
+# Kvantum widget style "KMaterial" (select it in ~/.config/Kvantum/kvantum.kvconfig)
+[templates.kmaterial_kvantum_config]
+input_path = "~/My-repos/KMaterial-de/templates/kvantum/KMaterial.kvconfig"
+output_path = "~/.config/Kvantum/KMaterial/KMaterial.kvconfig"
+
+[templates.kmaterial_kvantum_svg]
+input_path = "~/My-repos/KMaterial-de/templates/kvantum/KMaterial.svg"
+output_path = "~/.config/Kvantum/KMaterial/KMaterial.svg"
+
+# Kate/KWrite editor colour theme "Noctalia" (choose it in Kate: Settings ->
+# Configure Kate -> Color Themes, with automatic theme selection turned off)
+[templates.kmaterial_kate_theme]
+input_path = "~/My-repos/KMaterial-de/templates/kate/noctalia.theme"
+output_path = "~/.local/share/org.kde.syntax-highlighting/themes/noctalia.theme"
+
+# Icon theme "KMaterial": Fluent-dark with folders recoloured. Noctalia writes the
+# colours, then build-icons.sh regenerates ~/.local/share/icons/KMaterial.
+# Needs the Fluent icon theme installed.
+[templates.kmaterial_icons]
+input_path = "~/My-repos/KMaterial-de/icons/colors.sh.template"
+output_path = "~/.cache/kmaterial/icon-colors.sh"
+post_hook = "bash ~/My-repos/KMaterial-de/icons/build-icons.sh"
+
+# mpv/uosc player colours
+[templates.mpv_uosc]
+input_path = "~/.config/mpv/templates/uosc.conf"
+output_path = "~/.config/mpv/script-opts/uosc.conf"

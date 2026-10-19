@@ -8,6 +8,7 @@
         self.nixosModules.niri
         self.nixosModules.millennium
         self.nixosModules.screention
+        self.nixosModules.links
       ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
