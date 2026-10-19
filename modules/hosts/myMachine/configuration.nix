@@ -148,6 +148,7 @@ programs.steam.enable = true;
       zoxide
       eza
       bat
+      uv
       kdePackages.filelight
       fishPlugins.fzf-fish
       fishPlugins.autopair
