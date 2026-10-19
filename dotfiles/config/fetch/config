@@ -1,0 +1,31 @@
+# fetch config (github.com/areofyl/fetch), laid out like ~/.config/fastfetch/config.jsonc:
+# Hardware, then Software, then Desktop. Colours are ANSI names, so they come
+# from the terminal's Noctalia palette and follow the wallpaper.
+# fetch can't rename labels or add icons, so no tree lines/icons like fastfetch.
+
+# --- Look ---
+box=1
+separator=─
+# "blue" is Noctalia's pink accent
+label_color=blue
+logo_outer=red
+logo_inner=white
+light=top-left
+
+# --- Hardware ---
+host
+cpu
+gpu
+memory
+disk
+---
+# --- Software ---
+os
+kernel
+packages
+shell
+---
+# --- Desktop ---
+displaymanager
+wm
+theme

@@ -1,0 +1,20 @@
+[general]
+import = ["~/.config/alacritty/themes/noctalia.toml"]
+
+[window]
+opacity = 0.85
+
+# Maple Mono NF: rounded like the Lexend UI font, with Nerd Font icons for Starship
+[font]
+normal = { family = "Maple Mono NF" }
+size = 11
+
+# Fish only in Alacritty; the login shell stays bash. Fish's default theme uses
+# the terminal's ANSI colours, so it follows the Noctalia palette imported above.
+[terminal.shell]
+program = "/run/current-system/sw/bin/fish"
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001B\r"

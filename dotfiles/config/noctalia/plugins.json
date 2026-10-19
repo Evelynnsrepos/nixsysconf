@@ -4,12 +4,21 @@
             "enabled": true,
             "name": "Noctalia Plugins",
             "url": "https://github.com/noctalia-dev/noctalia-plugins"
+        },
+        {
+            "enabled": true,
+            "name": "My custom plugins",
+            "url": "https://github.com/Evelynnsrepos/DefaultAppsNoctaliaPlugin"
         }
     ],
     "states": {
         "custom-sticker": {
             "enabled": true,
             "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
+        },
+        "d6a79d:default-apps": {
+            "enabled": true,
+            "sourceUrl": "https://github.com/Evelynnsrepos/DefaultAppsNoctaliaPlugin"
         },
         "keybind-cheatsheet": {
             "enabled": true,

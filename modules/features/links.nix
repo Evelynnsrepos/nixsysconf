@@ -57,6 +57,9 @@
       "text/html" = "link-router.desktop";
       "x-scheme-handler/spotify" = "com.spotify.Client.desktop";
       "x-scheme-handler/steam" = "steam.desktop";
+      # Login links from `claude` / JetBrains Toolbox back into the apps
+      "x-scheme-handler/claude-cli" = "claude-code-url-handler.desktop";
+      "x-scheme-handler/jetbrains" = "jetbrainsd.desktop";
     };
 
   };

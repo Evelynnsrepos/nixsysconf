@@ -1,0 +1,15 @@
+# Written by Noctalia from the current colour scheme (regenerated on every colour change)
+config/noctalia/colors.json
+config/kitty/themes/noctalia.conf
+config/alacritty/themes/
+config/yazi/flavors/
+config/qt6ct/colors/
+config/mpv/script-opts/uosc.conf
+config/Kvantum/KMaterial/
+config/spicetify/Themes/Comfy/color.ini
+
+# Noctalia plugins (downloaded through Noctalia's plugin manager; list in noctalia/plugins.json)
+config/noctalia/plugins/
+
+# Backups apps leave behind
+*.bak

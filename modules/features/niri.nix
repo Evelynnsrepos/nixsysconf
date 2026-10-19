@@ -79,8 +79,8 @@
           "Mod+D".spawn-sh = "${lib.getExe self'.packages.myNoctalia} ipc call launcher toggle";
           "Mod+E".spawn-sh = lib.getExe pkgs.kdePackages.dolphin;
           "Mod+A".toggle-overview = _: { };
-          # Screention region capture (its own global hotkey can't work on niri)
-          "Alt+Shift+S".spawn-sh = "${lib.getExe self'.packages.screention} --capture";
+          # niri's own region screenshot: freezes all monitors, drag a rectangle
+          "Mod+Shift+S".screenshot = _: { };
         };
       };
 };
