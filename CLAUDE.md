@@ -81,3 +81,44 @@ From a cloud Claude Code session (2026-10-19). Summary of that conversation:
      `variable-pitch-mode` + monospace faces for tables/code.
 
    Remove this handover section once the Emacs work is done (keep the parts above it).
+
+## Handover: Default Apps Noctalia plugin (in progress)
+
+Pieced together on 2026-10-19 from the git history of this repo and the plugin repo (the
+earlier chat itself wasn't available, so the "why" below is partly inferred).
+
+- **The plugin lives in its own repo**: <https://github.com/Evelynnsrepos/DefaultAppsNoctaliaPlugin>,
+  checked out locally at `~/My-repos/DefaultAppsNoctaliaPlugin`. Its README explains how it
+  works. In short: a bar icon opens a panel to pick the default browser, file manager,
+  terminal, editor, image/video/music/PDF/archive viewer and email app. It writes
+  `~/.config/mimeapps.list` itself (not via `xdg-mime`), and for the terminal also
+  `~/.config/kdeglobals` and `~/.config/xdg-terminals.list`. The real work is in
+  `default-apps/defaultapps.sh` (usable on its own: `scan`, `set`, `set-terminal`).
+- The repo is a Noctalia **plugin source** (`registry.json` at the top, one folder per plugin
+  id). It's added as a source in `dotfiles/config/noctalia/plugins.json`; Noctalia names
+  the plugins `d6a79d:default-apps` and `d6a79d:dropdown-test`.
+- **What happened, in order** (plugin repo commits):
+  1. v1: a settings page with drop-downs (`NComboBox`).
+  2. Drop-downs had zero width (`minimumWidth: 0`), fixed in 0.2.1, but they still
+     **wouldn't open**.
+  3. So the plugin went back to a bar icon + panel with plain clickable lists, no drop-downs.
+  4. Added `dropdown-test`, a debug plugin (panel + settings page with drop-down/popup tests,
+     an event log and path info, logs under the tag `DropdownTest`) to find out why.
+  5. 0.3.1 (latest): search bar and "Show more" (5 apps at a time) in the app list.
+- **In this repo**:
+  - `configuration.nix` installs `xdg-terminal-exec` and `kdePackages.kservice`
+    (`kbuildsycoca6`) for the plugin.
+  - `home.nix` sets `NOCTALIA_CONFIG_DIR` to the real dotfiles folder, because
+    `~/.config/noctalia` is a link and Qt refused to load plugin QML through it
+    ("File name case mismatch"). This is probably what broke the drop-downs, but that's
+    **not confirmed**.
+  - `dotfiles/config/noctalia/plugins.json`: `default-apps` enabled, `dropdown-test`
+    disabled. `settings.json` still has both widgets in the bar.
+- **Open questions, ask the user before changing anything**:
+  - With `NOCTALIA_CONFIG_DIR` set, do drop-downs open now (check with `dropdown-test`)?
+    If yes, `dropdown-test` can be removed from the plugin repo, `plugins.json` and the
+    bar in `settings.json`.
+  - Does picking an app actually work (Dolphin, GTK apps, `xdg-open`, Flatpaks)?
+  - Anything else they want from the plugin.
+
+  Remove this handover section once the plugin work is done (keep the parts above it).
