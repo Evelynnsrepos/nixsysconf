@@ -148,6 +148,7 @@ programs.steam.enable = true;
       zoxide
       eza
       bat
+      pkgs.python3
       uv
       kdePackages.filelight
       fishPlugins.fzf-fish
