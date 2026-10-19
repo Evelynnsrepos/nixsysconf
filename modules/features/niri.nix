@@ -5,6 +5,20 @@
   enable = true;
   package = self.packages.${pkgs.stdenv.hostPlatform.system}.myNiri;
   };
+
+  # "Open"/"Save" dialogs come from the desktop portal, not from mimeapps.list. niri's
+  # portal config sends them to the GNOME portal (= Nautilus); send them to KDE's (= Dolphin's
+  # dialog) instead. This file replaces niri's niri-portals.conf, so its other lines are copied.
+  xdg.portal = {
+    extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
+    config.niri = {
+      default = [ "gnome" "gtk" ];
+      "org.freedesktop.impl.portal.Access" = [ "gtk" ];
+      "org.freedesktop.impl.portal.Notification" = [ "gtk" ];
+      "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+      "org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
+    };
+  };
   };
 
   perSystem = { pkgs, lib, self', ... }: {
