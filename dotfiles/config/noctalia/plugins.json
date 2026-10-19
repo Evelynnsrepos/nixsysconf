@@ -20,6 +20,10 @@
             "enabled": true,
             "sourceUrl": "https://github.com/Evelynnsrepos/DefaultAppsNoctaliaPlugin"
         },
+        "d6a79d:dropdown-test": {
+            "enabled": true,
+            "sourceUrl": "https://github.com/Evelynnsrepos/DefaultAppsNoctaliaPlugin"
+        },
         "keybind-cheatsheet": {
             "enabled": true,
             "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"

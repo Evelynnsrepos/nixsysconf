@@ -43,6 +43,11 @@
           "yazi"
           "Vencord/settings"
         ]);
+
+        # ~/.config/noctalia is a link now. Qt refuses to load plugin QML through it
+        # ("File name case mismatch", the real path differs from the given one), so
+        # Noctalia gets the real folder.
+        systemd.user.sessionVariables.NOCTALIA_CONFIG_DIR = "${dotfiles}/noctalia/";
       };
     };
 

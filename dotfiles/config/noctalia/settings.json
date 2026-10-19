@@ -292,6 +292,12 @@
                         "terminalCommand": "kitty"
                     },
                     "id": "plugin:usb-drive-manager"
+                },
+                {
+                    "id": "plugin:d6a79d:dropdown-test"
+                },
+                {
+                    "id": "plugin:d6a79d:default-apps"
                 }
             ]
         }
