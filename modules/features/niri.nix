@@ -20,8 +20,8 @@
         # Qt/KDE apps read their colours from ~/.config/kdeglobals (Noctalia KColorScheme
         # template) via plasma-integration; qt6ct's palette is ignored by Dolphin/Kate
         environment.QT_QPA_PLATFORMTHEME = "kde";
-        # Material look: Kvantum with "MateriaNoctalia" (MateriaDark recoloured by a Noctalia
-        # user template; theme chosen in ~/.config/Kvantum/kvantum.kvconfig)
+        # Material 3 look: Kvantum theme "KMaterial" from ~/KMaterial-de, coloured by a Noctalia
+        # user template; theme chosen in ~/.config/Kvantum/kvantum.kvconfig
         environment.QT_STYLE_OVERRIDE = "kvantum";
         input.keyboard = {
           xkb.layout = "de";
@@ -79,6 +79,8 @@
           "Mod+D".spawn-sh = "${lib.getExe self'.packages.myNoctalia} ipc call launcher toggle";
           "Mod+E".spawn-sh = lib.getExe pkgs.kdePackages.dolphin;
           "Mod+A".toggle-overview = _: { };
+          # Screention region capture (its own global hotkey can't work on niri)
+          "Alt+Shift+S".spawn-sh = "${lib.getExe self'.packages.screention} --capture";
         };
       };
 };

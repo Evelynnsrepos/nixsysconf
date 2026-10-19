@@ -7,6 +7,7 @@
         self.nixosModules.claude
         self.nixosModules.niri
         self.nixosModules.millennium
+        self.nixosModules.screention
       ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -19,10 +20,29 @@
     # Enable networking
     networking.networkmanager.enable = true;
 
+    # Kvantum caps the frame of list items (ItemView) at 6px, which limits how round
+    # selections can be. Raise the cap to 24px for KMaterial (~/KMaterial-de).
+    nixpkgs.overlays = [
+      (final: prev: {
+        kdePackages = prev.kdePackages.overrideScope (kfinal: kprev: {
+          qtstyleplugin-kvantum = kprev.qtstyleplugin-kvantum.overrideAttrs (old: {
+            postPatch = (old.postPatch or "") + ''
+              sed -i -E 's/qMin\(r\.(left|right|top|bottom),6\)/qMin(r.\1,24)/' \
+                style/themeconfig/ThemeConfig.cpp
+              grep -q 'qMin(r.left,24)' style/themeconfig/ThemeConfig.cpp
+            '';
+          });
+        });
+      })
+    ];
+
     # Fish (Alacritty's shell): completions for Nix-installed programs etc.
     programs.fish.enable = true;
-    # Alacritty font, needed for Starship's icons and rounded prompt segments
-    fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
+    # Fonts: Lexend (UI) and Maple Mono NF (terminals, editors; Nerd Font icons for Starship)
+    fonts.packages = [ pkgs.lexend pkgs.maple-mono.NF pkgs.nerd-fonts.jetbrains-mono ];
+    # UI font: Lexend Deca (also set in ~/.config/kdeglobals and GTK via gsettings)
+    fonts.fontconfig.defaultFonts.sansSerif = [ "Lexend Deca" ];
+    fonts.fontconfig.defaultFonts.monospace = [ "Maple Mono NF" ];
 
     # Mullvad VPN: daemon + GUI
     services.mullvad-vpn = {
@@ -102,17 +122,18 @@ programs.steam.enable = true;
     environment.systemPackages = with pkgs; [
       wget
       git
-      emacs-nox
+      emacs-pgtk
       alacritty
       kitty  # Mod+Return; ~/.config/kitty/kitty.conf (cursor trail, Noctalia colours)
       gh
-      godot
+      godot_4_7  # pinned to Godot 4.7.x; plain `godot` follows nixpkgs to newer versions
       (discord.override { withVencord = true; })
       kdePackages.dolphin
       kdePackages.kate
       kdePackages.qt6ct
       kdePackages.plasma-integration  # "kde" Qt platform theme: Qt/KDE apps read Noctalia's kdeglobals
-      kdePackages.qtstyleplugin-kvantum  # Qt style: theme "MateriaNoctalia" (Noctalia user template, see ~/.config/noctalia/user-templates.toml)
+      fluent-icon-theme  # base of the "KMaterial" icon theme (~/KMaterial-de/icons)
+      kdePackages.qtstyleplugin-kvantum  # Qt style: theme "KMaterial" from ~/KMaterial-de (Noctalia user template)
       oreo-cursors-plus  # all Oreo colours; switch with the scripts in ~/claude scripts
       vivaldi
       cargo
@@ -126,6 +147,7 @@ programs.steam.enable = true;
       zoxide
       eza
       bat
+      kdePackages.filelight
       fishPlugins.fzf-fish
       fishPlugins.autopair
       fastfetch  # runs when Alacritty opens (~/.config/fish/config.fish); config in ~/.config/fastfetch
