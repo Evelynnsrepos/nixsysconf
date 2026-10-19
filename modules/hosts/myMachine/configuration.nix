@@ -11,6 +11,8 @@
         self.nixosModules.home
 	self.nixosModules.opentabletdriver
         self.nixosModules.emacs
+        self.nixosModules.lmstudio
+        self.nixosModules.n8n
       ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -149,6 +151,7 @@ programs.steam.enable = true;
       eza
       bat
       pkgs.python3
+      nodejs  # node + npm
       uv
       kdePackages.filelight
       fishPlugins.fzf-fish
