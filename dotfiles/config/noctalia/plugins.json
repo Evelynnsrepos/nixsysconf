@@ -21,7 +21,7 @@
             "sourceUrl": "https://github.com/Evelynnsrepos/DefaultAppsNoctaliaPlugin"
         },
         "d6a79d:dropdown-test": {
-            "enabled": true,
+            "enabled": false,
             "sourceUrl": "https://github.com/Evelynnsrepos/DefaultAppsNoctaliaPlugin"
         },
         "keybind-cheatsheet": {

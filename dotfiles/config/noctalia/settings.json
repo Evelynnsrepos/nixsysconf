@@ -294,9 +294,8 @@
                     "id": "plugin:usb-drive-manager"
                 },
                 {
-                    "id": "plugin:d6a79d:dropdown-test"
-                },
-                {
+                    "defaultSettings": {
+                    },
                     "id": "plugin:d6a79d:default-apps"
                 }
             ]

@@ -82,13 +82,19 @@
             "enabled": true
         },
         "BetterRoleDot": {
-            "enabled": true
+            "enabled": true,
+            "bothStyles": false,
+            "copyRoleColorInProfilePopout": false
         },
         "BetterSessions": {
-            "enabled": true
+            "enabled": true,
+            "backgroundCheck": false
         },
         "BetterSettings": {
-            "enabled": true
+            "enabled": true,
+            "disableFade": true,
+            "eagerLoad": true,
+            "organizeMenu": true
         },
         "BetterUploadButton": {
             "enabled": true
@@ -97,13 +103,15 @@
             "enabled": true
         },
         "BlurNSFW": {
-            "enabled": true
+            "enabled": true,
+            "blurAmount": 10
         },
         "CallTimer": {
             "enabled": true
         },
         "CharacterCounter": {
-            "enabled": true
+            "enabled": true,
+            "colorEffects": true
         },
         "ClearURLs": {
             "enabled": true
@@ -115,7 +123,10 @@
             "enabled": false
         },
         "ConsoleJanitor": {
-            "enabled": true
+            "enabled": true,
+            "disableLoggers": false,
+            "disableSpotifyLogger": true,
+            "whitelistedLoggers": "GatewaySocket; Routing/Utils"
         },
         "ConsoleShortcuts": {
             "enabled": false
@@ -167,7 +178,13 @@
             "enabled": false
         },
         "FakeNitro": {
-            "enabled": true
+            "enabled": true,
+            "enableStickerBypass": true,
+            "enableStreamQualityBypass": true,
+            "enableEmojiBypass": true,
+            "transformEmojis": true,
+            "transformStickers": true,
+            "transformCompoundSentence": false
         },
         "FakeProfileThemes": {
             "enabled": false
@@ -179,7 +196,8 @@
             "enabled": true
         },
         "FixImagesQuality": {
-            "enabled": true
+            "enabled": true,
+            "originalImagesInChat": false
         },
         "FixSpotifyEmbeds": {
             "enabled": true
@@ -200,7 +218,9 @@
             "enabled": true
         },
         "GameActivityToggle": {
-            "enabled": true
+            "enabled": true,
+            "location": "PANEL",
+            "oldIcon": false
         },
         "GifPaste": {
             "enabled": false
@@ -224,10 +244,18 @@
             "enabled": false
         },
         "ImageZoom": {
-            "enabled": true
+            "enabled": true,
+            "size": 950,
+            "zoom": 3.2,
+            "nearestNeighbour": false,
+            "square": false,
+            "invertScroll": true,
+            "zoomSpeed": 0.5,
+            "saveZoomValues": true
         },
         "ImplicitRelationships": {
-            "enabled": true
+            "enabled": true,
+            "sortByAffinity": true
         },
         "IrcColors": {
             "enabled": false
@@ -236,10 +264,18 @@
             "enabled": false
         },
         "LoadingQuotes": {
-            "enabled": true
+            "enabled": true,
+            "replaceEvents": true,
+            "enableDiscordPresetQuotes": false,
+            "additionalQuotes": "",
+            "additionalQuotesDelimiter": "|",
+            "enablePluginPresetQuotes": true
         },
         "MemberCount": {
-            "enabled": true
+            "enabled": true,
+            "memberList": true,
+            "toolTip": true,
+            "voiceActivity": true
         },
         "MentionAvatars": {
             "enabled": false
@@ -254,7 +290,17 @@
             "enabled": false
         },
         "MessageLogger": {
-            "enabled": true
+            "enabled": true,
+            "logDeletedAttachments": true,
+            "collapseDeleted": false,
+            "deleteStyle": "text",
+            "ignoreBots": true,
+            "ignoreSelf": false,
+            "ignoreUsers": "",
+            "ignoreChannels": "",
+            "ignoreGuilds": "",
+            "logEdits": true,
+            "logDeletes": true
         },
         "MoreQuickReactions": {
             "enabled": false
@@ -321,7 +367,12 @@
             "enabled": true
         },
         "OpenInApp": {
-            "enabled": true
+            "enabled": true,
+            "spotify": true,
+            "steam": true,
+            "epic": true,
+            "tidal": true,
+            "itunes": true
         },
         "OverrideForumDefaults": {
             "enabled": false
@@ -330,7 +381,9 @@
             "enabled": true
         },
         "PermissionFreeWill": {
-            "enabled": true
+            "enabled": true,
+            "lockout": true,
+            "onboarding": true
         },
         "PermissionsViewer": {
             "enabled": true
@@ -366,7 +419,12 @@
             "enabled": false
         },
         "RelationshipNotifier": {
-            "enabled": true
+            "enabled": true,
+            "offlineRemovals": true,
+            "groups": true,
+            "servers": true,
+            "friends": true,
+            "friendRequestCancels": true
         },
         "ReplaceGoogleSearch": {
             "enabled": false
@@ -381,7 +439,8 @@
             "enabled": false
         },
         "ReviewDB": {
-            "enabled": true
+            "enabled": true,
+            "notifyReviews": true
         },
         "RoleColorEverywhere": {
             "enabled": false
@@ -411,7 +470,10 @@
             "enabled": false
         },
         "ShowHiddenThings": {
-            "enabled": true
+            "enabled": true,
+            "showTimeouts": true,
+            "showInvitesPaused": true,
+            "showModView": true
         },
         "ShowMeYourName": {
             "enabled": false
@@ -423,16 +485,22 @@
             "enabled": true
         },
         "SilentTyping": {
-            "enabled": true
+            "enabled": true,
+            "isEnabled": true,
+            "showIcon": false
         },
         "SortFriendRequests": {
-            "enabled": true
+            "enabled": true,
+            "showDates": false
         },
         "SpotifyControls": {
-            "enabled": true
+            "enabled": true,
+            "hoverControls": false
         },
         "SpotifyCrack": {
-            "enabled": true
+            "enabled": true,
+            "noSpotifyAutoPause": true,
+            "keepSpotifyActivityOnIdle": false
         },
         "SpotifyShareCommands": {
             "enabled": false
@@ -566,6 +634,6 @@
         "authenticated": false,
         "url": "https://api.vencord.dev/",
         "settingsSync": false,
-        "settingsSyncVersion": 1792353295333
+        "settingsSyncVersion": 1792430315555
     }
 }

@@ -127,7 +127,6 @@ programs.steam.enable = true;
       alacritty
       kitty  # Mod+Return; ~/.config/kitty/kitty.conf (cursor trail, Noctalia colours)
       gh
-      godot_4_7  # pinned to Godot 4.7.x; plain `godot` follows nixpkgs to newer versions
       (discord.override { withVencord = true; })
       kdePackages.dolphin
       kdePackages.kate
