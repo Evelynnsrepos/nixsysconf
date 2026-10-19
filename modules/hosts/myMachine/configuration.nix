@@ -9,6 +9,7 @@
         self.nixosModules.millennium
         self.nixosModules.links
         self.nixosModules.home
+	self.nixosModules.opentabletdriver
       ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
