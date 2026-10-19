@@ -104,6 +104,7 @@ programs.steam.enable = true;
       git
       emacs-nox
       alacritty
+      kitty  # Mod+Return; ~/.config/kitty/kitty.conf (cursor trail, Noctalia colours)
       gh
       godot
       (discord.override { withVencord = true; })
@@ -111,6 +112,7 @@ programs.steam.enable = true;
       kdePackages.kate
       kdePackages.qt6ct
       kdePackages.plasma-integration  # "kde" Qt platform theme: Qt/KDE apps read Noctalia's kdeglobals
+      kdePackages.qtstyleplugin-kvantum  # Qt style: theme "MateriaNoctalia" (Noctalia user template, see ~/.config/noctalia/user-templates.toml)
       oreo-cursors-plus  # all Oreo colours; switch with the scripts in ~/claude scripts
       vivaldi
       cargo

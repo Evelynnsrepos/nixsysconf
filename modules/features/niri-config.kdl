@@ -1,5 +1,5 @@
 // Personal niri config, included from the flake (~/.nixsysconf/modules/features/niri.nix).
-// Mod+A, Mod+D, Mod+E, Mod+Q and Mod+T are defined in the flake, don't bind them here.
+// Mod+A, Mod+D, Mod+E, Mod+Q, Mod+T and Mod+Return are defined in the flake, don't bind them here.
 
 // Ask apps not to draw their own title bars
 prefer-no-csd

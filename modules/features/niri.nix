@@ -20,6 +20,9 @@
         # Qt/KDE apps read their colours from ~/.config/kdeglobals (Noctalia KColorScheme
         # template) via plasma-integration; qt6ct's palette is ignored by Dolphin/Kate
         environment.QT_QPA_PLATFORMTHEME = "kde";
+        # Material look: Kvantum with "MateriaNoctalia" (MateriaDark recoloured by a Noctalia
+        # user template; theme chosen in ~/.config/Kvantum/kvantum.kvconfig)
+        environment.QT_STYLE_OVERRIDE = "kvantum";
         input.keyboard = {
           xkb.layout = "de";
         };
@@ -71,6 +74,7 @@
 
         binds = {
           "Mod+T".spawn-sh = lib.getExe pkgs.alacritty;
+          "Mod+Return".spawn-sh = lib.getExe pkgs.kitty;
           "Mod+Q".close-window = _: { };
           "Mod+D".spawn-sh = "${lib.getExe self'.packages.myNoctalia} ipc call launcher toggle";
           "Mod+E".spawn-sh = lib.getExe pkgs.kdePackages.dolphin;
