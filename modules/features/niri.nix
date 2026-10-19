@@ -26,6 +26,8 @@
         input.keyboard = {
           xkb.layout = "de";
         };
+        # Pen tablets (incl. OpenTabletDriver's virtual tablet) only cover the middle Acer (DP-2)
+        input.tablet.map-to-output = "Acer Technologies ED270U P2 A43011AD63W01";
         # Focus the window under the cursor (like Hyprland), without scrolling the view to it
         input.focus-follows-mouse = _: {
           props = { max-scroll-amount = "0%"; };
