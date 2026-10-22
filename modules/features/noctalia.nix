@@ -1,7 +1,8 @@
 { self, inputs, ... }: {
-  perSystem = { pkgs, ... }: {
+  perSystem = { system, ... }: {
     packages.myNoctalia = inputs.wrapper-modules.wrappers.noctalia-shell.wrap {
-      inherit pkgs; #
+      # older nixpkgs on purpose, see nixpkgs-pinned in flake.nix
+      pkgs = inputs.nixpkgs-pinned.legacyPackages.${system};
 
     };
   };

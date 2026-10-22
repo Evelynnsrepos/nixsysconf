@@ -30,3 +30,8 @@ if status is-interactive
     abbr -a lt eza --tree --level=2 --icons
     abbr -a cat bat --paging=never
 end
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /home/evilynn/.lmstudio/bin
+# End of LM Studio CLI section
+

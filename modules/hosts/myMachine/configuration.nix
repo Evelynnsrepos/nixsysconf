@@ -11,43 +11,29 @@
         self.nixosModules.home
 	self.nixosModules.opentabletdriver
         self.nixosModules.emacs
-        self.nixosModules.lmstudio
-        self.nixosModules.n8n
+        self.nixosModules.ai  # LM Studio, Open WebUI, n8n, aider, MCP servers
+        self.nixosModules.rustdev
+        self.nixosModules.teamviewer
+        self.nixosModules.teams
+        self.nixosModules.btop
+        self.nixosModules.shell
+        self.nixosModules.dev
+        self.nixosModules.theming
+        self.nixosModules.apps
+        self.nixosModules.lix
+        # self.nixosModules.cachyos-kernel  # its binary cache is down, see cachyos-kernel.nix
       ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-    # Use latest kernel.
-    boot.kernelPackages = pkgs.linuxPackages_latest;
+    # Zen kernel: tuned for desktop responsiveness (AMD GPU, so no out-of-tree driver to worry about).
+    # CachyOS is ready in cachyos-kernel.nix: import it below and delete this line to switch.
+    boot.kernelPackages = pkgs.linuxPackages_zen;
 
     networking.hostName = "nixos"; # Define your hostname.
 
     # Enable networking
     networking.networkmanager.enable = true;
-
-    # Kvantum caps the frame of list items (ItemView) at 6px, which limits how round
-    # selections can be. Raise the cap to 24px for KMaterial (~/My-repos/KMaterial-de).
-    nixpkgs.overlays = [
-      (final: prev: {
-        kdePackages = prev.kdePackages.overrideScope (kfinal: kprev: {
-          qtstyleplugin-kvantum = kprev.qtstyleplugin-kvantum.overrideAttrs (old: {
-            postPatch = (old.postPatch or "") + ''
-              sed -i -E 's/qMin\(r\.(left|right|top|bottom),6\)/qMin(r.\1,24)/' \
-                style/themeconfig/ThemeConfig.cpp
-              grep -q 'qMin(r.left,24)' style/themeconfig/ThemeConfig.cpp
-            '';
-          });
-        });
-      })
-    ];
-
-    # Fish (Alacritty's shell): completions for Nix-installed programs etc.
-    programs.fish.enable = true;
-    # Fonts: Lexend (UI) and Maple Mono NF (terminals, editors; Nerd Font icons for Starship)
-    fonts.packages = [ pkgs.lexend pkgs.maple-mono.NF pkgs.nerd-fonts.jetbrains-mono ];
-    # UI font: Lexend Deca (also set in ~/.config/kdeglobals and GTK via gsettings)
-    fonts.fontconfig.defaultFonts.sansSerif = [ "Lexend Deca" ];
-    fonts.fontconfig.defaultFonts.monospace = [ "Maple Mono NF" ];
 
     # Mullvad VPN: daemon + GUI
     services.mullvad-vpn = {
@@ -111,59 +97,8 @@
       ];
     };
 
-    # Install firefox.
-    programs.firefox.enable = true;
-
     # Allow unfree packages
     nixpkgs.config.allowUnfree = true;
-
-    # flatpak
-    services.flatpak.enable = true;
-
-#steam
-programs.steam.enable = true;
-
-    # List packages installed in system profile.
-    environment.systemPackages = with pkgs; [
-      wget
-      git
-      alacritty
-      kitty  # Mod+Return; ~/.config/kitty/kitty.conf (cursor trail, Noctalia colours)
-      gh
-      (discord.override { withVencord = true; })
-      kdePackages.dolphin
-      kdePackages.kate
-      kdePackages.qt6ct
-      kdePackages.plasma-integration  # "kde" Qt platform theme: Qt/KDE apps read Noctalia's kdeglobals
-      fluent-icon-theme  # base of the "KMaterial" icon theme (~/My-repos/KMaterial-de/icons)
-      kdePackages.qtstyleplugin-kvantum  # Qt style: theme "KMaterial" from ~/My-repos/KMaterial-de (Noctalia user template)
-      oreo-cursors-plus  # all Oreo colours; switch with the scripts in ~/claude scripts
-      vivaldi
-      cargo
-      jetbrains-toolbox
-      spicetify-cli  # patches the user Flatpak Spotify (com.spotify.Client), themed by Noctalia
-      mission-center  # not the Flatpak: its magpie helper runs on the host and needs nix-ld
-      fish
-      # Fish setup (~/.config/fish/config.fish); Starship gets Noctalia's palette
-      starship
-      fzf
-      zoxide
-      eza
-      bat
-      pkgs.python3
-      nodejs  # node + npm
-      uv
-      kdePackages.filelight
-      fishPlugins.fzf-fish
-      fishPlugins.autopair
-      fastfetch  # runs when Alacritty opens (~/.config/fish/config.fish); config in ~/.config/fastfetch
-      fetch  # animated 3D distro-logo fetch (github.com/areofyl/fetch); config in ~/.config/fetch/config
-      (mpv.override { scripts = with mpvScripts; [ uosc thumbfast ]; })  # ~/.config/mpv, colours from Noctalia template
-      # Default Apps Noctalia plugin (~/My-repos/DefaultAppsNoctaliaPlugin):
-      xdg-terminal-exec  # default terminal from ~/.config/xdg-terminals.list (GLib, launchers)
-      kdePackages.kservice  # kbuildsycoca6, so running KDE apps pick up new defaults
-
-    ];
 
     system.stateVersion = "26.05";
 

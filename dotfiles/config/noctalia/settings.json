@@ -461,7 +461,7 @@
         "inactiveIndicators": true,
         "indicatorColor": "primary",
         "indicatorOpacity": 0.6,
-        "indicatorThickness": 3,
+        "indicatorThickness": 6,
         "launcherIcon": "",
         "launcherIconColor": "none",
         "launcherPosition": "end",
@@ -474,7 +474,6 @@
             "steam",
             "app.zen_browser.zen",
             "io.github.Evelynnsrepos.Evelopment-Games-Designer",
-            "org.godotengine.Godot4.7",
             "discord",
             "spotify"
         ],

@@ -1,6 +1,10 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # Last nixpkgs where everything built (2026-10-14), for packages broken on current unstable:
+    # Noctalia (noctalia-qs vs Qt 6.12) and Open WebUI (broken wrapper in 0.12.3).
+    # Drop a use once that package builds on unstable again; drop the input when none is left.
+    nixpkgs-pinned.url = "github:nixos/nixpkgs/55bfb4d7437bd4e09ab7cba58a43bd68eb310044";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";
@@ -13,6 +17,10 @@
     # Claude Desktop (official Linux beta)
     claude-desktop.url = "github:poeck/claude-desktop-nix-flake";
     claude-desktop.inputs.nixpkgs.follows = "nixpkgs";
+
+    # CachyOS kernels (patches + tunings), prebuilt in the author's binary cache (see cachyos-kernel.nix).
+    # Do not make it follow our nixpkgs: its pinned nixpkgs is what the cached kernels were built with.
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
 
     # Home Manager (master tracks nixos-unstable)
     home-manager.url = "github:nix-community/home-manager";
