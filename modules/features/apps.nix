@@ -14,6 +14,7 @@
       kdePackages.dolphin
       kdePackages.kate
       kdePackages.filelight
+      kdePackages.ark  # archive manager (zip, tar, 7z ...)
       mission-center  # not the Flatpak: its magpie helper runs on the host and needs nix-ld
       # Default Apps Noctalia plugin (~/My-repos/DefaultAppsNoctaliaPlugin):
       xdg-terminal-exec  # default terminal from ~/.config/xdg-terminals.list (GLib, launchers)

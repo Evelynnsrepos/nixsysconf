@@ -28,7 +28,20 @@
           rev = "eeb03f88525cbf74c4019e59a3fea45a537a760b";
           sha256 = "0l226nbhd2im766mfvhc0xsv57wr75nccgqg83c2nkx4d2y1shfi";
         };
-        postPatch = "cp ${./ai/web-search-mcp/package.json} package.json; cp ${./ai/web-search-mcp/package-lock.json} package-lock.json";
+        # Smaller searches for local models with small context windows (gpt-oss-20b, 8k):
+        # full-web-search fetches 3 pages by default instead of 5, and its description tells
+        # the model to try the cheap snippet search first.
+        postPatch = ''
+          cp ${./ai/web-search-mcp/package.json} package.json
+          cp ${./ai/web-search-mcp/package-lock.json} package-lock.json
+          sed -i -e "s/default(5).describe('Number of results to return with full content/default(3).describe('Number of results to return with full content/" \
+            -e "s/^    let limit = 5; \/\/ default/    let limit = 3; \/\/ default/" \
+            -e "s/This is the most comprehensive web search tool\./Uses many tokens: try get-web-search-summaries first and use this only when the snippets are not enough./" \
+            src/index.ts
+          grep -q "default(3).describe('Number of results to return with full" src/index.ts
+          grep -q "^    let limit = 3;" src/index.ts
+          grep -q "Uses many tokens" src/index.ts
+        '';
         npmDepsHash = "sha256-c+6Z4YBYVmNUw0RNE3T4Z1JwL/GsaIY9m18L0MHGd4E=";
         env.PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = "1";
         installPhase = ''
@@ -53,7 +66,7 @@
             command = "${pkgs.nodejs}/bin/node";
             args = [ "${web-search-mcp}/lib/web-search-mcp/dist/index.js" ];
             env = {
-              MAX_CONTENT_LENGTH = "10000";
+              MAX_CONTENT_LENGTH = "2000";  # characters per fetched page, about 500 tokens
               BROWSER_HEADLESS = "true";
               MAX_BROWSERS = "1";
               PLAYWRIGHT_BROWSERS_PATH = "${browsers}";

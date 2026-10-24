@@ -14,23 +14,22 @@
         self.nixosModules.ai  # LM Studio, Open WebUI, n8n, aider, MCP servers
         self.nixosModules.rustdev
         self.nixosModules.teamviewer
-        self.nixosModules.teams
+        # self.nixosModules.teams disabled because trash
         self.nixosModules.btop
         self.nixosModules.shell
         self.nixosModules.dev
         self.nixosModules.theming
         self.nixosModules.apps
         self.nixosModules.lix
-        # self.nixosModules.cachyos-kernel  # its binary cache is down, see cachyos-kernel.nix
+        # self.nixosModules.cachyos-kernel  # that shit was hacked so zen it is
       ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-    # Zen kernel: tuned for desktop responsiveness (AMD GPU, so no out-of-tree driver to worry about).
-    # CachyOS is ready in cachyos-kernel.nix: import it below and delete this line to switch.
+    # Zen kernel
     boot.kernelPackages = pkgs.linuxPackages_zen;
 
-    networking.hostName = "nixos"; # Define your hostname.
+    networking.hostName = "evilxOS"; # Define your hostname.
 
     # Enable networking
     networking.networkmanager.enable = true;
@@ -61,9 +60,9 @@
       LC_TIME = "de_DE.UTF-8";
     };
 
-    # Enable the GNOME Desktop Environment.
-    services.displayManager.gdm.enable = true;
-    services.desktopManager.gnome.enable = true;
+    # enable gnome (for fallback lol)
+    # services.displayManager.gdm.enable = true;
+    # services.desktopManager.gnome.enable = true;
 
     # Configure keymap in X11
     services.xserver.xkb = {
