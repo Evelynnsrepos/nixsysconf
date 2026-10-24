@@ -11,7 +11,7 @@
       nodejs  # node + npm
       uv
       jetbrains-toolbox
-      dirvenv
+      direnv
     ];
   };
 
