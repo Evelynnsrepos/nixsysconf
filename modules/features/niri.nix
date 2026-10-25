@@ -78,7 +78,7 @@
           "Mod+T".spawn-sh = lib.getExe pkgs.alacritty;
           "Mod+Return".spawn-sh = lib.getExe pkgs.kitty;
           "Mod+Q".close-window = _: { };
-          "Mod+D".spawn-sh = "${lib.getExe self'.packages.myNoctalia} ipc call launcher toggle";
+          "Mod+D".spawn-sh = "${lib.getExe self'.packages.myNoctalia} msg panel-toggle launcher";
           "Mod+E".spawn-sh = lib.getExe pkgs.kdePackages.dolphin;
           "Mod+A".toggle-overview = _: { };
           # niri's own region screenshot: freezes all monitors, drag a rectangle

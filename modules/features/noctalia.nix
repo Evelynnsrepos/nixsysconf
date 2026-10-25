@@ -1,9 +1,7 @@
 { self, inputs, ... }: {
-  perSystem = { system, ... }: {
-    packages.myNoctalia = inputs.wrapper-modules.wrappers.noctalia-shell.wrap {
-      # older nixpkgs on purpose, see nixpkgs-pinned in flake.nix
-      pkgs = inputs.nixpkgs-pinned.legacyPackages.${system};
-
-    };
+  perSystem = { pkgs, ... }: {
+    # Noctalia v5 (native rewrite, TOML config in dotfiles/config/noctalia5, linked in home.nix).
+    # The v4 config stays in dotfiles/config/noctalia for reference; v5 doesn't read it.
+    packages.myNoctalia = pkgs.noctalia;
   };
 }

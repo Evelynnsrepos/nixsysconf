@@ -1,0 +1,60 @@
+# Noctalia v5 config, carried over by hand from the v4 settings in ../noctalia (v5 doesn't migrate them).
+# Settings changed in the GUI go to ~/.local/state/noctalia/settings.toml, not here.
+
+[wallpaper]
+directory = "~/Pictures/Wallpapers"
+fill_mode = "crop"
+
+[wallpaper.default]
+path = "~/Pictures/Wallpapers/967bb25d-67b5-4461-8884-f3e9c757b44e-free-moving-backgrounds.webp"
+
+[theme]
+mode = "dark"
+source = "wallpaper"
+wallpaper_scheme = "faithful"
+
+[theme.templates]
+enable_builtin_templates = true
+# v4 also had discord, zenBrowser, spicetify, steam, yazi and code; v5 has no built-in ones for those
+builtin_ids = ["alacritty", "btop", "kcolorscheme", "gtk3", "gtk4", "qt", "emacs", "niri", "starship", "kitty"]
+
+# KMaterial (Material 3 look for Qt/KDE apps), from ~/My-repos/KMaterial-de
+[theme.templates.user.kmaterial_kvantum_config]
+input_path = "~/My-repos/KMaterial-de/templates/kvantum/KMaterial.kvconfig"
+output_path = "~/.config/Kvantum/KMaterial/KMaterial.kvconfig"
+
+[theme.templates.user.kmaterial_kvantum_svg]
+input_path = "~/My-repos/KMaterial-de/templates/kvantum/KMaterial.svg"
+output_path = "~/.config/Kvantum/KMaterial/KMaterial.svg"
+
+[theme.templates.user.kmaterial_kate_theme]
+input_path = "~/My-repos/KMaterial-de/templates/kate/noctalia.theme"
+output_path = "~/.local/share/org.kde.syntax-highlighting/themes/noctalia.theme"
+
+[theme.templates.user.kmaterial_icons]
+input_path = "~/My-repos/KMaterial-de/icons/colors.sh.template"
+output_path = "~/.cache/kmaterial/icon-colors.sh"
+post_hook = "bash ~/My-repos/KMaterial-de/icons/build-icons.sh"
+
+# mpv/uosc player colours
+[theme.templates.user.mpv_uosc]
+input_path = "~/.config/mpv/templates/uosc.conf"
+output_path = "~/.config/mpv/script-opts/uosc.conf"
+
+[plugins]
+# kenn/keybind-cheatsheet: v5 port of the v4 keybind-cheatsheet (community source)
+enabled = ["evilynn/default-apps", "kenn/keybind-cheatsheet"]
+
+# Default Apps plugin, straight from its local checkout (needs the noctalia-v5 branch checked out)
+[[plugins.source]]
+name     = "evilynn"
+kind     = "path"
+location = "~/My-repos/DefaultAppsNoctaliaPlugin"
+enabled  = true
+
+[widget.default_apps]
+type = "evilynn/default-apps:button"
+
+[bar.main]
+# v5's default end section, plus the Default Apps button
+end = ["media", "tray", "notifications", "clipboard", "network", "bluetooth", "volume", "brightness", "battery", "default_apps", "control-center", "session"]

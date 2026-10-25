@@ -2,7 +2,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # Last nixpkgs where everything built (2026-10-14), for packages broken on current unstable:
-    # Noctalia (noctalia-qs vs Qt 6.12), Open WebUI (broken wrapper in 0.12.3), TeamViewer (15.82.6 segfaults).
+    # Open WebUI and aider (posthog marked broken with mcp 2), mcp-proxy (0.13.0 needs mcp<2),
+    # TeamViewer (15.82.6 segfaults).
     # Drop a use once that package builds on unstable again; drop the input when none is left.
     nixpkgs-pinned.url = "github:nixos/nixpkgs/55bfb4d7437bd4e09ab7cba58a43bd68eb310044";
 

@@ -32,7 +32,6 @@
           "fish"
           "kitty"
           "alacritty"
-          "noctalia"
           "mpv"
           "Kvantum"
           "qt6ct"
@@ -42,12 +41,10 @@
           "fetch"
           "yazi"
           "Vencord/settings"
-        ]);
-
-        # ~/.config/noctalia is a link now. Qt refuses to load plugin QML through it
-        # ("File name case mismatch", the real path differs from the given one), so
-        # Noctalia gets the real folder.
-        systemd.user.sessionVariables.NOCTALIA_CONFIG_DIR = "${dotfiles}/noctalia/";
+        ]) // {
+          # Noctalia v5 config; the v4 one in dotfiles/config/noctalia is kept but unused
+          noctalia.source = link "noctalia5";
+        };
       };
     };
 
