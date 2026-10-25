@@ -6,6 +6,7 @@ prefer-no-csd
 
 layout {
     gaps 12
+    background-color "transparent"
 
     // Outline around the focused window (niri default width is 4)
     focus-ring {
@@ -129,9 +130,10 @@ binds {
     Mod+Shift+E { quit; }
 }
 
-// Show Noctalia's wallpaper behind the workspaces in overview instead of grey
+// Show Noctalia's wallpaper in overview instead of grey. v5 renamed v4's noctalia-overview
+// layer; putting the normal wallpaper in the backdrop needs see-through workspaces.
 layer-rule {
-    match namespace="^noctalia-overview"
+    match namespace="^noctalia-wallpaper"
     place-within-backdrop true
 }
 

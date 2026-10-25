@@ -60,9 +60,15 @@
       LC_TIME = "de_DE.UTF-8";
     };
 
-    # enable gnome (for fallback lol)
-     services.displayManager.gdm.enable = true;
-     services.desktopManager.gnome.enable = true;
+    # Login screen: Noctalia Greeter (greetd) instead of GDM. GNOME stays as a fallback session.
+    # If it ever fails to start: Ctrl+Alt+F2, log in, and boot the previous generation.
+    services.displayManager.noctalia-greeter = {
+      enable = true;
+      settings.keyboard.layout = "de";
+      passwordlessSyncUsers = [ "evilynn" ];  # Noctalia's "Sync Now" copies wallpaper/colours without a password
+    };
+    security.pam.services.greetd.enableGnomeKeyring = true;  # GDM unlocked the keyring at login; keep that
+    services.desktopManager.gnome.enable = true;
 
     # Configure keymap in X11
     services.xserver.xkb = {

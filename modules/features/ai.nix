@@ -95,16 +95,19 @@
         CacheDirectory = "aider-mcp-server";
         WorkingDirectory = "%C/aider-mcp-server";
       };
+
+      # older nixpkgs on purpose, see nixpkgs-pinned in flake.nix
+      pinned = import inputs.nixpkgs-pinned {
+        system = pkgs.stdenv.hostPlatform.system;
+        config.allowUnfree = true;  # Open WebUI's license counts as unfree
+      };
     in {
-      environment.systemPackages = [ pkgs.lmstudio pkgs.aider-chat-with-browser ];
+      # aider from pinned: on unstable its posthog dependency is marked broken (mcp-proxy below, too: needs mcp<2)
+      environment.systemPackages = [ pkgs.lmstudio pinned.aider-chat-with-browser ];
 
       services.open-webui.enable = true;
       services.open-webui.port = 6967;
-      # older nixpkgs on purpose, see nixpkgs-pinned in flake.nix
-      services.open-webui.package = (import inputs.nixpkgs-pinned {
-        system = pkgs.stdenv.hostPlatform.system;
-        config.allowUnfree = true;  # Open WebUI's license counts as unfree
-      }).open-webui;
+      services.open-webui.package = pinned.open-webui;
 
       services.n8n.enable = true;
       # MCP servers for the n8n assistant (/assistant); it only speaks SSE to them.
@@ -138,7 +141,7 @@
         wantedBy = [ "default.target" ];
         path = mcpServicePath;
         serviceConfig = mcpServiceDirs // {
-          ExecStart = "${lib.getExe pkgs.mcp-proxy} --host 127.0.0.1 --port 8767 --named-server-config ${mcpConfig}";
+          ExecStart = "${lib.getExe pinned.mcp-proxy} --host 127.0.0.1 --port 8767 --named-server-config ${mcpConfig}";
           Restart = "on-failure";
         };
       };
