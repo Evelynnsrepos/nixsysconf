@@ -8,7 +8,7 @@
       wget
       cargo
       python3
-      nodejs  # node + npm
+     # nodejs  # node + npm
       uv
       jetbrains-toolbox
       direnv

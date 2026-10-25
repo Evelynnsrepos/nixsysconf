@@ -290,19 +290,6 @@
         "type": "github"
       }
     },
-    "root": {
-      "inputs": {
-        "claude-desktop": "claude-desktop",
-        "flake-parts": "flake-parts",
-        "home-manager": "home-manager",
-        "import-tree": "import-tree",
-        "millennium": "millennium",
-        "nix-cachyos-kernel": "nix-cachyos-kernel",
-        "nixpkgs": "nixpkgs_3",
-        "nixpkgs-pinned": "nixpkgs-pinned",
-        "wrapper-modules": "wrapper-modules"
-      }
-    },
     "wrapper-modules": {
       "inputs": {
         "nixpkgs": "nixpkgs_4"
