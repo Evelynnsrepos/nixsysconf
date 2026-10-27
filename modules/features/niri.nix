@@ -26,8 +26,15 @@
         input.keyboard = {
           xkb.layout = "de";
         };
-        # No input.tablet.map-to-output: OpenTabletDriver maps the pen to DP-2 itself
-        # (Display area in ~/.config/OpenTabletDriver/settings.json); mapping in both fights
+        # Wacom pen through the kernel driver + libinput (pressure included); same mapping
+        # OpenTabletDriver had: whole tablet onto the middle monitor
+        input.tablet.map-to-output = "DP-2";
+        # The Wacom's touch surface shows up as a touchpad. niri's built-in gestures:
+        # 3 fingers sideways scrolls columns, up/down switches workspace, 4 fingers up/down = overview
+        input.touchpad = {
+          tap = _: { };
+          natural-scroll = _: { };
+        };
         # Focus the window under the cursor (like Hyprland), without scrolling the view to it
         input.focus-follows-mouse = _: {
           props = { max-scroll-amount = "0%"; };

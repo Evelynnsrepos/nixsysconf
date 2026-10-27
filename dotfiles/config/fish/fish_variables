@@ -1,0 +1,3 @@
+# This file contains fish universal variable definitions.
+# VERSION: 3.0
+SETUVAR --export SSL_CERT_FILE:/etc/ssl/certs/ca\x2dcertificates\x2ecrt

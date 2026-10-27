@@ -9,7 +9,7 @@
         self.nixosModules.millennium
         self.nixosModules.links
         self.nixosModules.home
-	self.nixosModules.opentabletdriver
+        # self.nixosModules.opentabletdriver  # blacklists the wacom kernel driver, which kills touch; niri drives the pen now
         self.nixosModules.emacs
         self.nixosModules.ai  # LM Studio, Open WebUI, n8n, aider, MCP servers
         self.nixosModules.rustdev

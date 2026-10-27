@@ -58,3 +58,9 @@ type = "evilynn/default-apps:button"
 [bar.main]
 # v5's default end section, plus the Default Apps button
 end = ["media", "tray", "notifications", "clipboard", "network", "bluetooth", "volume", "brightness", "battery", "default_apps", "control-center", "session"]
+
+# Google Calendar via Noctalia's built-in provider. Sign in once from Settings → Calendar accounts;
+# the login token goes to the GNOME keyring (unlocked at login by greetd), never into this file.
+[calendar.account.google]
+provider = "google"
+name = "Google"
