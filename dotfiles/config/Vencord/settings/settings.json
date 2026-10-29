@@ -100,14 +100,15 @@
             "enabled": true
         },
         "BiggerStreamPreview": {
-            "enabled": true
+            "enabled": false
         },
         "BlurNSFW": {
             "enabled": true,
             "blurAmount": 10
         },
         "CallTimer": {
-            "enabled": true
+            "enabled": true,
+            "format": "stopwatch"
         },
         "CharacterCounter": {
             "enabled": true,
@@ -246,7 +247,7 @@
         "ImageZoom": {
             "enabled": true,
             "size": 950,
-            "zoom": 5,
+            "zoom": 2.8000000000000003,
             "nearestNeighbour": false,
             "square": false,
             "invertScroll": true,
@@ -578,10 +579,12 @@
             "enabled": false
         },
         "VolumeBooster": {
-            "enabled": true
+            "enabled": true,
+            "multiplier": 2
         },
         "WhoReacted": {
-            "enabled": true
+            "enabled": true,
+            "clickableAvatars": true
         },
         "XSOverlay": {
             "enabled": false
@@ -634,6 +637,6 @@
         "authenticated": false,
         "url": "https://api.vencord.dev/",
         "settingsSync": false,
-        "settingsSyncVersion": 1793010786662
+        "settingsSyncVersion": 1793315216306
     }
 }
