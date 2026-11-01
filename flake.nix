@@ -7,6 +7,10 @@
     # Drop a use once that package builds on unstable again; drop the input when none is left.
     nixpkgs-pinned.url = "github:nixos/nixpkgs/55bfb4d7437bd4e09ab7cba58a43bd68eb310044";
 
+    # Discord 1.0.168 fixes black incoming streams; nixos-unstable is still on 1.0.161.
+    # Drop this input (and its use in apps.nix) once nixos-unstable has 1.0.168.
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
+
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";
 

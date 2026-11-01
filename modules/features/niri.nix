@@ -43,6 +43,19 @@
         # Copy of ~/.config/niri/config.kdl, updated with ~/.nixsysconf/sync-niri.sh
         include = "${./niri-config.kdl}";
 
+        workspace "Steam" {
+          open-on-output "DP-2"
+        }
+          workspace "Browse" {
+          open-on-output "DP-2"
+        }
+          workspace "Work" {
+          open-on-output "DP-2"
+        }
+          workspace "Test" {
+          open-on-output "DP-2"
+        }
+        
         outputs = {
           "Acer Technologies ED270U P2 A5381994F3W01" = {   # HDMI-A-1, left
             mode = "2560x1440@119.998";
@@ -73,12 +86,39 @@
           }
           {
             matches = [ { app-id = "^discord$"; } ];
-            open-on-output = "LG Electronics LG ULTRAGEAR 0x0002F884";
+            open-on-output = "DP-3"; #LG horirontalll
+            open-maximized = true;
           }
           {
             matches = [ { app-id = "^Spotify$"; } ];
-            open-on-output = "Acer Technologies ED270U P2 A5381994F3W01";   # left Acer (HDMI-A-1)
+            open-on-output = "HDMI-A-1";   # left Acer (HDMI-A-1)
+            open-maximized = true;
           }
+          {
+            matches = [ { app-id = "^Stean$"; } ];
+            open-on-output = "DP-2";   # middle monitor
+            open-maximized = true;
+            open-on-workspace "Steam";
+          }
+          {
+            matches = [ { app-id = "^Zen$"; } ];
+            open-on-output = "DP-2";   # middle monitor
+            open-maximized = true;
+            open-on-workspace "Browse;"
+          }
+          {
+            matches = [ { app-id = "^Claude$"; } ];
+            open-on-output = "DP-2";   # middle monitor
+            open-maximized = true;
+            open-on-workspace "Work";
+          }
+                    {
+            matches = [ { app-id = "^Eve.Lopment Games Designer$"; } ];
+            open-on-output = "DP-2";   # middle monitor
+            open-maximized = true;
+            open-on-workspace "Work";
+          }
+
         ];
 
         binds = {
@@ -92,6 +132,8 @@
           "Mod+Shift+S".screenshot = _: { };
         };
       };
+
+
 };
 };
 }

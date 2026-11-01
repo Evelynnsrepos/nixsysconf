@@ -1,4 +1,4 @@
-{ ... }: {
+{ inputs, ... }: {
   # Desktop apps
   flake.nixosModules.apps = { pkgs, ... }: {
     programs.firefox.enable = true;
@@ -10,7 +10,11 @@
 
     environment.systemPackages = with pkgs; [
       vivaldi
-      (discord.override { withVencord = true; })
+      # From master: 1.0.161 on unstable can't decode incoming streams, see nixpkgs-master in flake.nix
+      ((import inputs.nixpkgs-master {
+        system = pkgs.stdenv.hostPlatform.system;
+        config.allowUnfree = true;
+      }).discord.override { withVencord = true; })
       spicetify-cli
       (mpv.override {
         scripts = with mpvScripts; [
